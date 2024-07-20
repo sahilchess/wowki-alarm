@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pushbutton",
+      "id": "wokwi-pushbutton-0",
+      "top": 15.8,
+      "left": 172.8,
+      "attrs": { "bounce": "1", "color": "red" }
+    },
+    { "type": "wokwi-arduino-nano", "id": "nano1", "top": -140.6, "left": 84.2, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -322.97, "left": 73.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -188.05,
+      "left": 288,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-ds1307", "id": "ds1", "top": -159, "left": 278.5, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "wokwi-photoresistor-sensor-1",
+      "top": -192.3,
+      "left": -120.7,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-buzzer", "id": "wokwi-buzzer-1", "top": -228, "left": 1.8, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -17.6,
+      "left": 157.8,
+      "rotate": 180,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "nano1:GND.2", "ds1:GND", "black", [ "v20", "*", "v0" ] ],
+    [ "nano1:5V", "ds1:5V", "red", [ "v8", "*", "h-25", "v0" ] ],
+    [ "nano1:GND.1", "lcd1:VSS", "black", [ "v12", "*", "h-30", "v18" ] ],
+    [ "nano1:GND.2", "lcd1:K", "black", [ "v-8", "*", "h0" ] ],
+    [ "nano1:GND.1", "lcd1:RW", "black", [ "v12", "*", "h-68", "v18" ] ],
+    [ "nano1:5V", "lcd1:VDD", "red", [ "v8", "*", "h-35", "v22" ] ],
+    [ "nano1:5V", "r1:2", "red", [ "v8", "h166", "v-112", "h50" ] ],
+    [ "nano1:12", "lcd1:RS", "orange", [ "v-32", "*", "h0", "v20" ] ],
+    [ "nano1:11", "lcd1:E", "purple", [ "v-28", "*", "h0", "v20" ] ],
+    [ "nano1:10", "lcd1:D4", "green", [ "v-24", "*", "h0", "v20" ] ],
+    [ "nano1:9", "lcd1:D5", "brown", [ "v-20", "*", "h0", "v20" ] ],
+    [ "nano1:8", "lcd1:D6", "gold", [ "v-16", "*", "h0", "v20" ] ],
+    [ "nano1:7", "lcd1:D7", "gray", [ "v-12", "*", "h0", "v20" ] ],
+    [ "nano1:A4", "ds1:SDA", "orange", [ "v16", "*", "h-20" ] ],
+    [ "nano1:A5", "ds1:SCL", "purple", [ "v20", "*", "h-15" ] ],
+    [ "r1:1", "lcd1:A", "red", [] ],
+    [ "wokwi-photoresistor-sensor-1:VCC", "nano1:5V", "red", [ "v57.6", "h230.4", "v-57.6" ] ],
+    [
+      "wokwi-photoresistor-sensor-1:GND",
+      "nano1:GND.1",
+      "black",
+      [ "v28.8", "h259.6", "v-28.8" ]
+    ],
+    [ "wokwi-photoresistor-sensor-1:DO", "nano1:13", "green", [ "v19.2", "h144.6" ] ],
+    [ "nano1:GND.1", "wokwi-buzzer-1:1", "black", [ "v49.4", "h-199.9" ] ],
+    [ "wokwi-buzzer-1:2", "nano1:6", "green", [ "v-9.6", "h28.4", "v-28.8", "h86.4" ] ],
+    [ "nano1:GND.1", "wokwi-pushbutton-0:2.l", "black", [ "v59", "h-75.1", "v57.6" ] ],
+    [
+      "wokwi-pushbutton-0:1.r",
+      "nano1:5",
+      "green",
+      [ "v-28.8", "h19.4", "v-153.6", "h0", "v-19.2", "h-86.4" ]
+    ],
+    [ "nano1:GND.1", "led2:A", "black", [ "v68.6", "h-36.7", "v-28.8", "h-19.2" ] ],
+    [ "led2:C", "nano1:4", "green", [ "v-28.8", "h95.6", "v-144", "h-96", "v9.6" ] ]
+  ],
+  "dependencies": {}
+}
