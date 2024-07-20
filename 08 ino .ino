@@ -4,7 +4,6 @@
 #include "pitches.h"
 
 #define LDR_PIN A0
-
 #define SPEAKER_PIN 6
 
 
@@ -70,7 +69,6 @@ void loop()
       delay(0.000000000000000000001);
   if (lux >= 400) {
     digitalWrite(LED_BUILTIN, HIGH);
-    digitalWrite(4, HIGH);
     tone(SPEAKER_PIN, NOTE_G4);
     delay(250);
     tone(SPEAKER_PIN, NOTE_C5);
@@ -83,7 +81,6 @@ void loop()
     delay(1000);
     noTone(SPEAKER_PIN);
     digitalWrite(LED_BUILTIN, LOW);
-    digitalWrite(4, LOW);
   } else {
       return;
     }
